@@ -3,11 +3,11 @@ package com.medicenjona.entity.client;
 import com.medicenjona.UltraHardcore;
 import com.medicenjona.entity.custom.EnderClamEntity;
 import com.medicenjona.entity.custom.TigerEntity;
+import mod.azure.azurelib.renderer.GeoEntityRenderer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class EnderClamRenderer extends GeoEntityRenderer<EnderClamEntity> {
     public EnderClamRenderer(EntityRendererFactory.Context renderManager) {

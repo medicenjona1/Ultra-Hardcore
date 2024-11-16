@@ -12,14 +12,12 @@ base {
 
 repositories {
 
-	maven {
-		name = 'GeckoLib'
-		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-		content {
-			includeGroupByRegex("software\\.bernie.*")
-			includeGroup("com.eliotlash.mclib")
-		}
-	}
+
+
+	// The Maven with the mods source
+	maven {url 'https://libs.azuredoom.com:4443/mods'}
+	// Needed for Fabric only at the moment
+	maven { url "https://maven.terraformersmc.com/releases" }
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
@@ -39,9 +37,10 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
-	implementation("com.eliotlash.mclib:mclib:20")
-	
+
+	modImplementation "mod.azure.azurelib:azurelib-fabric-1.20.1:2.0.39"
+
+
 }
 
 processResources {
