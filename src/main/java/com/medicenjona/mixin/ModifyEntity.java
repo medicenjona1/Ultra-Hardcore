@@ -1,6 +1,7 @@
 package com.medicenjona.mixin;
 
 
+import com.medicenjona.commands.UltraHardcoreCommand;
 import com.medicenjona.utils.DiffControl;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
@@ -38,7 +39,7 @@ public abstract class ModifyEntity extends PassiveEntity {
     @Inject(method = "<init>",
             at= @At("TAIL"))
     private void addCustomGoals(CallbackInfo info) {
-        if(DiffControl.ENABLE_CUSTOM_GOAL) {
+        if(UltraHardcoreCommand.villagerDifficulty) {
 
             this.goalSelector.add(1, new SwimGoal(this));
             this.goalSelector.add(2, new MeleeAttackGoal(this, 1.2D, false));
