@@ -1,12 +1,14 @@
 package com.medicenjona.entity.custom;
 
 import com.medicenjona.entity.ModEntities;
+import com.medicenjona.entity.ia.goals.SummonMinionsGoal;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageSources;
+import net.minecraft.entity.mob.VexEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.MerchantEntity;
@@ -14,6 +16,8 @@ import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
+import net.tslat.smartbrainlib.api.SmartBrainOwner;
+import net.tslat.smartbrainlib.api.core.SmartBrain;
 import org.jetbrains.annotations.Nullable;
 import mod.azure.azurelib.animatable.GeoEntity;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
@@ -21,7 +25,7 @@ import mod.azure.azurelib.core.animation.*;
 import mod.azure.azurelib.core.object.PlayState;
 import mod.azure.azurelib.util.AzureLibUtil;
 
-public class LilithEntity extends AnimalEntity implements GeoEntity {
+public class LilithEntity extends AnimalEntity implements GeoEntity{
     private AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 
     public LilithEntity(EntityType<? extends AnimalEntity> entityType, World world) {
@@ -40,8 +44,11 @@ public class LilithEntity extends AnimalEntity implements GeoEntity {
     protected void initGoals() {
         //this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new MeleeAttackGoal(this, 1.2D, false));
+        this.goalSelector.add(8, new SummonMinionsGoal(this));
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 0.75f, 1));
         this.goalSelector.add(4, new LookAroundGoal(this));
+
+
 
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         //this.targetSelector.add(2, new ActiveTargetGoal<>(this, MerchantEntity.class, true));
